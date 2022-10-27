@@ -1,7 +1,7 @@
 #include "Pipeline.h"
 
 QueueFamilyIndices Pipeline::findQueueFamilies(VkPhysicalDevice device) {
-    QueueFamilyIndices indices;
+    QueueFamilyIndices queueFamilyIndices;
 
     uint32_t queueFamilyCount = 0;
     vkGetPhysicalDeviceQueueFamilyProperties(device, &queueFamilyCount, nullptr);
@@ -12,22 +12,22 @@ QueueFamilyIndices Pipeline::findQueueFamilies(VkPhysicalDevice device) {
     int i = 0;
     for (const auto& queueFamily : queueFamilies) {
         if (queueFamily.queueFlags & VK_QUEUE_GRAPHICS_BIT) {
-            indices.graphicsFamily = i;
+            queueFamilyIndices.graphicsFamily = i;
         }
 
         VkBool32 presentSupport = false;
         vkGetPhysicalDeviceSurfaceSupportKHR(device, i, surface, &presentSupport);
 
         if (presentSupport) {
-            indices.presentFamily = i;
+            queueFamilyIndices.presentFamily = i;
         }
 
-        if (indices.isComplete()) {
+        if (queueFamilyIndices.isComplete()) {
             break;
         }
 
         i++;
     }
 
-    return indices;
+    return queueFamilyIndices;
 }

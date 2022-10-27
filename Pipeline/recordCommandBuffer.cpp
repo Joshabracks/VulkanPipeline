@@ -5,7 +5,7 @@ void Pipeline::recordCommandBuffer(VkCommandBuffer commandBuffer, uint32_t image
     beginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
 
     if (vkBeginCommandBuffer(commandBuffer, &beginInfo) != VK_SUCCESS) {
-        throw std::runtime_error("recordCommandBuffer: \u001b[31mfailed to begin recording command buffer!\u001b[0m");
+        throw std::runtime_error("failed to begin recording command buffer!");
     }
 
     VkRenderPassBeginInfo renderPassInfo{};
@@ -43,11 +43,14 @@ void Pipeline::recordCommandBuffer(VkCommandBuffer commandBuffer, uint32_t image
 
     vkCmdBindIndexBuffer(commandBuffer, indexBuffer, 0, VK_INDEX_TYPE_UINT16);
 
+    vkCmdBindDescriptorSets(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipelineLayout, 0, 1, &descriptorSets[currentFrame], 0, nullptr);
+    
     vkCmdDrawIndexed(commandBuffer, static_cast<uint32_t>(indices.size()), 1, 0, 0, 0);
 
     vkCmdEndRenderPass(commandBuffer);
 
     if (vkEndCommandBuffer(commandBuffer) != VK_SUCCESS) {
-        throw std::runtime_error("recordCommandBuffer: \u001b[31mfailed to record command buffer!\u001b[0m");
+        throw std::runtime_error("failed to record command buffer!");
     }
+
 }

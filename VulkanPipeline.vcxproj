@@ -167,6 +167,9 @@
     <ClCompile Include="Pipeline\createCommandBuffers.cpp" />
     <ClCompile Include="Pipeline\createCommandPools.cpp" />
     <ClCompile Include="Pipeline\createDebugMessengerEXT.cpp" />
+    <ClCompile Include="Pipeline\createDescriptorPool.cpp" />
+    <ClCompile Include="Pipeline\createDescriptorSetLayout.cpp" />
+    <ClCompile Include="Pipeline\createDescriptorSets.cpp" />
     <ClCompile Include="Pipeline\createFrameBuffers.cpp" />
     <ClCompile Include="Pipeline\createGraphicsPipeline.cpp" />
     <ClCompile Include="Pipeline\createImageViews.cpp" />
@@ -178,6 +181,7 @@
     <ClCompile Include="Pipeline\createSurface.cpp" />
     <ClCompile Include="Pipeline\createSwapchain.cpp" />
     <ClCompile Include="Pipeline\createSyncObjects.cpp" />
+    <ClCompile Include="Pipeline\createUniformBuffers.cpp" />
     <ClCompile Include="Pipeline\createVertexBuffer.cpp" />
     <ClCompile Include="Pipeline\debugCallback.cpp" />
     <ClCompile Include="Pipeline\destroyDebugUtilsMessengerEXT.cpp" />
@@ -199,6 +203,7 @@
     <ClCompile Include="Pipeline\run.cpp" />
     <ClCompile Include="Pipeline\initWindow.cpp" />
     <ClCompile Include="Pipeline\setupDebugMessenger.cpp" />
+    <ClCompile Include="Pipeline\updateUniformBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pipeline\Pipeline.h" />

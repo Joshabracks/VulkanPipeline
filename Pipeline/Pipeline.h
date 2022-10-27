@@ -2,16 +2,23 @@
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
 
-#include <vector>
-#include <optional>
-#include <string>
-#include <stdexcept>
-#include <set>
-#include <algorithm>
-#include <fstream>
-#include <iostream>
+#define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
+#include <iostream>
+#include <fstream>
+#include <stdexcept>
+#include <algorithm>
+#include <chrono>
+#include <vector>
+#include <cstring>
+#include <cstdlib>
+#include <cstdint>
+#include <limits>
 #include <array>
+#include <optional>
+#include <set>
 
 struct QueueFamilyIndices {
     std::optional<uint32_t> graphicsFamily;
@@ -27,6 +34,13 @@ struct SwapChainSupportDetails {
     std::vector<VkSurfaceFormatKHR> formats;
     std::vector<VkPresentModeKHR> presentModes;
 };
+
+struct UniformBufferObject {
+    alignas(16) glm::mat4 model;
+    alignas(16) glm::mat4 view;
+    alignas(16) glm::mat4 proj;
+};
+
 
 struct Vertex {
     glm::vec2 pos;
@@ -58,6 +72,7 @@ struct Vertex {
     }
 };
 
+
 class Pipeline
 {
 public:
@@ -66,14 +81,14 @@ public:
     const std::string applicationName = "Vulkan Pipeline";
     const int MAX_FRAMES_IN_FLIGHT = 2;
     const std::vector<Vertex> vertices = {
-    {{-0.5f, -0.5f}, {1.0f, 0.0f, 0.0f}},
-    {{0.5f, -0.5f}, {0.0f, 1.0f, 0.0f}},
-    {{0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}},
-    {{-0.5f, 0.5f}, {1.0f, 1.0f, 1.0f}}
+        {{-0.5f, -0.5f}, {1.0f, 0.0f, 0.0f}},
+        {{0.5f, -0.5f}, {0.0f, 1.0f, 0.0f}},
+        {{0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}},
+        {{-0.5f, 0.5f}, {1.0f, 1.0f, 1.0f}}
     };
 
     const std::vector<uint16_t> indices = {
-    0, 1, 2, 2, 3, 0
+        0, 1, 2, 2, 3, 0
     };
 
     const std::vector<const char*> validationLayers = {
@@ -89,9 +104,6 @@ public:
 #else
     const bool enableValidationLayers = true;
 #endif
-    // struct QueueFamilyIndices;
-    // struct SwapChainSupportDetails;
-    // struct Vertex;
     VkResult CreateDebugUtilsMessengerEXT(VkInstance instance, const VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkDebugUtilsMessengerEXT* pDebugMessenger);
     void DestroyDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerEXT debugMessenger, const VkAllocationCallbacks* pAllocator);
     void run();
@@ -116,6 +128,10 @@ private:
     std::vector<VkFramebuffer> swapChainFramebuffers;
 
     VkRenderPass renderPass;
+    VkDescriptorSetLayout descriptorSetLayout;
+    VkDescriptorPool descriptorPool;
+    std::vector<VkDescriptorSet> descriptorSets;
+
     VkPipelineLayout pipelineLayout;
     VkPipeline graphicsPipeline;
 
@@ -125,6 +141,9 @@ private:
     VkDeviceMemory vertexBufferMemory;
     VkBuffer indexBuffer;
     VkDeviceMemory indexBufferMemory;
+
+    std::vector<VkBuffer> uniformBuffers;
+    std::vector<VkDeviceMemory> uniformBuffersMemory;
 
     std::vector<VkCommandBuffer> commandBuffers;
 
@@ -144,15 +163,20 @@ private:
     void populateDebugMessengerCreateInfo(VkDebugUtilsMessengerCreateInfoEXT& createInfo);
     void setupDebugMessenger();
     void createSurface();
+    void createDescriptorSets();
     void pickPhysicalDevice();
     void copyBuffer(VkBuffer srcBuffer, VkBuffer dstBuffer, VkDeviceSize size);
     void createLogicalDevice();
     void createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties, VkBuffer& buffer, VkDeviceMemory& bufferMemory);
     void createSwapChain();
     void createIndexBuffer();
+    void createDescriptorPool();
+    void updateUniformBuffer(uint32_t currentImage);
+    void createUniformBuffers();
     void createImageViews();
     void createRenderPass();
     void createGraphicsPipeline();
+    void createDescriptorSetLayout();
     void createFramebuffers();
     void createCommandPool();
     void createVertexBuffer();

@@ -1,7 +1,7 @@
 #include "Pipeline.h"
 
 bool Pipeline::isDeviceSuitable(VkPhysicalDevice device) {
-    QueueFamilyIndices indices = findQueueFamilies(device);
+    QueueFamilyIndices queueFamilyIndices = findQueueFamilies(device);
 
     bool extensionsSupported = checkDeviceExtensionSupport(device);
 
@@ -11,5 +11,5 @@ bool Pipeline::isDeviceSuitable(VkPhysicalDevice device) {
         swapChainAdequate = !swapChainSupport.formats.empty() && !swapChainSupport.presentModes.empty();
     }
 
-    return indices.isComplete() && extensionsSupported && swapChainAdequate;
+    return queueFamilyIndices.isComplete() && extensionsSupported && swapChainAdequate;
 }

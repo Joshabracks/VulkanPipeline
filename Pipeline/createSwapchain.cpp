@@ -23,13 +23,13 @@ void Pipeline::createSwapChain() {
     createInfo.imageArrayLayers = 1;
     createInfo.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
 
-    QueueFamilyIndices indices = findQueueFamilies(physicalDevice);
-    uint32_t queueFamilyIndices[] = { indices.graphicsFamily.value(), indices.presentFamily.value() };
+    QueueFamilyIndices queueFamilyIndices = findQueueFamilies(physicalDevice);
+    uint32_t queueFamilyIndicesGroup[] = { queueFamilyIndices.graphicsFamily.value(), queueFamilyIndices.presentFamily.value() };
 
-    if (indices.graphicsFamily != indices.presentFamily) {
+    if (queueFamilyIndices.graphicsFamily != queueFamilyIndices.presentFamily) {
         createInfo.imageSharingMode = VK_SHARING_MODE_CONCURRENT;
         createInfo.queueFamilyIndexCount = 2;
-        createInfo.pQueueFamilyIndices = queueFamilyIndices;
+        createInfo.pQueueFamilyIndices = queueFamilyIndicesGroup;
     }
     else {
         createInfo.imageSharingMode = VK_SHARING_MODE_EXCLUSIVE;
@@ -40,10 +40,8 @@ void Pipeline::createSwapChain() {
     createInfo.presentMode = presentMode;
     createInfo.clipped = VK_TRUE;
 
-    createInfo.oldSwapchain = VK_NULL_HANDLE;
-
     if (vkCreateSwapchainKHR(device, &createInfo, nullptr, &swapChain) != VK_SUCCESS) {
-        throw std::runtime_error("createSwapchain: \u001b[31mfailed to create swap chain!\u001b[0m");
+        throw std::runtime_error("failed to create swap chain!");
     }
 
     vkGetSwapchainImagesKHR(device, swapChain, &imageCount, nullptr);
