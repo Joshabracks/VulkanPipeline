@@ -36,6 +36,6 @@ void Pipeline::createInstance() {
     }
 
     if (vkCreateInstance(&createInfo, nullptr, &instance) != VK_SUCCESS) {
-        throw std::runtime_error("createInstance: \u001b[31mfailed to create instance!\u001b[0m");
+        throw std::runtime_error("failed to create instance!");
     }
 }

@@ -5,7 +5,7 @@ void Pipeline::pickPhysicalDevice() {
     vkEnumeratePhysicalDevices(instance, &deviceCount, nullptr);
 
     if (deviceCount == 0) {
-        throw std::runtime_error("pickPhysicalDevice: \u001b[31mfailed to find GPUs with Vulkan support!\u001b[0m");
+        throw std::runtime_error("failed to find GPUs with Vulkan support!");
     }
 
     std::vector<VkPhysicalDevice> devices(deviceCount);
@@ -19,6 +19,6 @@ void Pipeline::pickPhysicalDevice() {
     }
 
     if (physicalDevice == VK_NULL_HANDLE) {
-        throw std::runtime_error("pickPhysicalDevice: \u001b[31mfailed to find a suitable GPU!\u001b[0m");
+        throw std::runtime_error("failed to find a suitable GPU!");
     }
 }
