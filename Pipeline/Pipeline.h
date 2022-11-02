@@ -41,6 +41,10 @@ struct Vertex {
     glm::vec3 color;
     glm::vec2 texCoord;
 
+    bool operator==(const Vertex& other) const {
+        return pos == other.pos && color == other.color && texCoord == other.texCoord;
+    }
+
     static VkVertexInputBindingDescription getBindingDescription() {
         VkVertexInputBindingDescription bindingDescription{};
         bindingDescription.binding = 0;
@@ -85,26 +89,12 @@ public:
     const uint32_t WIDTH = 800;
     const uint32_t HEIGHT = 600;
 
+    const std::string MODEL_PATH = "Models/viking_room.obj";
+    const std::string TEXTURE_PATH = "Models/viking_room.png";
+
     const int MAX_FRAMES_IN_FLIGHT = 2;
 
     const std::string applicationName = "Vulkan Pipeline";
-    
-    const std::vector<Vertex> vertices = {
-    {{-0.5f, -0.5f, 0.0f}, {1.0f, 0.0f, 0.0f}, {0.0f, 0.0f}},
-    {{0.5f, -0.5f, 0.0f}, {0.0f, 1.0f, 0.0f}, {1.0f, 0.0f}},
-    {{0.5f, 0.5f, 0.0f}, {0.0f, 0.0f, 1.0f}, {1.0f, 1.0f}},
-    {{-0.5f, 0.5f, 0.0f}, {1.0f, 1.0f, 1.0f}, {0.0f, 1.0f}},
-
-    {{-0.5f, -0.5f, -0.5f}, {1.0f, 0.0f, 0.0f}, {0.0f, 0.0f}},
-    {{0.5f, -0.5f, -0.5f}, {0.0f, 1.0f, 0.0f}, {1.0f, 0.0f}},
-    {{0.5f, 0.5f, -0.5f}, {0.0f, 0.0f, 1.0f}, {1.0f, 1.0f}},
-    {{-0.5f, 0.5f, -0.5f}, {1.0f, 1.0f, 1.0f}, {0.0f, 1.0f}}
-    };
-
-    const std::vector<uint16_t> indices = {
-        0, 1, 2, 2, 3, 0,
-        4, 5, 6, 6, 7, 4
-    };
 
     const std::vector<const char*> validationLayers = {
         "VK_LAYER_KHRONOS_validation"
@@ -156,6 +146,8 @@ private:
     VkImageView textureImageView;
     VkSampler textureSampler;
 
+    std::vector<Vertex> vertices;
+    std::vector<uint32_t> indices;
     VkBuffer vertexBuffer;
     VkDeviceMemory vertexBufferMemory;
     VkBuffer indexBuffer;
@@ -236,6 +228,7 @@ private:
     void pickPhysicalDevice();
     SwapChainSupportDetails querySwapChainSupport(VkPhysicalDevice device);
     
+    void loadModel();
     void copyBufferToImage(VkBuffer buffer, VkImage image, uint32_t width, uint32_t height);
     void recordCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex);
     void transitionImageLayout(VkImage image, VkFormat format, VkImageLayout oldLayout, VkImageLayout newLayout);
