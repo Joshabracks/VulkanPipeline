@@ -198,6 +198,7 @@
     <ClCompile Include="Pipeline\findQueueFamilies.cpp" />
     <ClCompile Include="Pipeline\findSupportedFormat.cpp" />
     <ClCompile Include="Pipeline\framebufferResizeCallback.cpp" />
+    <ClCompile Include="Pipeline\generateMipmaps.cpp" />
     <ClCompile Include="Pipeline\getRequiredExtensions.cpp" />
     <ClCompile Include="Pipeline\hasStencilComponent.cpp" />
     <ClCompile Include="Pipeline\initVulkan.cpp" />
