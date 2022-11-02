@@ -165,6 +165,7 @@
     <ClCompile Include="Pipeline\copyBuffer.cpp" />
     <ClCompile Include="Pipeline\copyBufferToImage.cpp" />
     <ClCompile Include="Pipeline\createBuffer.cpp" />
+    <ClCompile Include="Pipeline\createColorResources.cpp" />
     <ClCompile Include="Pipeline\createCommandBuffers.cpp" />
     <ClCompile Include="Pipeline\createCommandPools.cpp" />
     <ClCompile Include="Pipeline\createDebugMessengerEXT.cpp" />
@@ -199,6 +200,7 @@
     <ClCompile Include="Pipeline\findSupportedFormat.cpp" />
     <ClCompile Include="Pipeline\framebufferResizeCallback.cpp" />
     <ClCompile Include="Pipeline\generateMipmaps.cpp" />
+    <ClCompile Include="Pipeline\getMaxUsableSampleCount.cpp" />
     <ClCompile Include="Pipeline\getRequiredExtensions.cpp" />
     <ClCompile Include="Pipeline\hasStencilComponent.cpp" />
     <ClCompile Include="Pipeline\initVulkan.cpp" />

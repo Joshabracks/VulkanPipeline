@@ -13,6 +13,8 @@ void Pipeline::recreateSwapChain() {
 
     createSwapChain();
     createImageViews();
+    createGraphicsPipeline();
+    createColorResources();
     createDepthResources();
     createFramebuffers();
 }

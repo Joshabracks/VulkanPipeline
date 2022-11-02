@@ -171,6 +171,12 @@ private:
     VkDeviceMemory depthImageMemory;
     VkImageView depthImageView;
 
+    VkImage colorImage;
+    VkDeviceMemory colorImageMemory;
+    VkImageView colorImageView;
+
+    VkSampleCountFlagBits msaaSamples = VK_SAMPLE_COUNT_1_BIT;
+
     bool framebufferResized = false;
 
     void initWindow();
@@ -184,6 +190,7 @@ private:
     void setupDebugMessenger();
     void copyBuffer(VkBuffer srcBuffer, VkBuffer dstBuffer, VkDeviceSize size);
     void createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties, VkBuffer& buffer, VkDeviceMemory& bufferMemory);
+    void createColorResources();
     void createCommandBuffers();
     void createCommandPool();
     void createDescriptorPool();
@@ -192,7 +199,7 @@ private:
     void createDepthResources();
     void createFramebuffers();
     void createGraphicsPipeline();
-    void createImage(uint32_t width, uint32_t height, uint32_t mipLevels, VkFormat format, VkImageTiling tiling, VkImageUsageFlags usage, VkMemoryPropertyFlags properties, VkImage& image, VkDeviceMemory& imageMemory);
+    void createImage(uint32_t width, uint32_t height, uint32_t mipLevels, VkSampleCountFlagBits numSamples, VkFormat format, VkImageTiling tiling, VkImageUsageFlags usage, VkMemoryPropertyFlags properties, VkImage& image, VkDeviceMemory& imageMemory);
     VkImageView createImageView(VkImage image, VkFormat format, VkImageAspectFlags aspectFlags, uint32_t mipLevels);
     void createImageViews();
     void createIndexBuffer();
@@ -229,6 +236,7 @@ private:
     void pickPhysicalDevice();
     SwapChainSupportDetails querySwapChainSupport(VkPhysicalDevice device);
     
+    VkSampleCountFlagBits getMaxUsableSampleCount();
     void loadModel();
     void generateMipmaps(VkImage image, VkFormat imageFormat, int32_t texWidth, int32_t texHeight, uint32_t mipLevels);
     void copyBufferToImage(VkBuffer buffer, VkImage image, uint32_t width, uint32_t height);
