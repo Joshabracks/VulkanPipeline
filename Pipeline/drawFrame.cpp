@@ -14,6 +14,8 @@ void Pipeline::drawFrame() {
         throw std::runtime_error("failed to acquire swap chain image!");
     }
 
+    updateUniformBuffer(currentFrame);
+
     vkResetFences(device, 1, &inFlightFences[currentFrame]);
 
     vkResetCommandBuffer(commandBuffers[currentFrame], /*VkCommandBufferResetFlagBits*/ 0);

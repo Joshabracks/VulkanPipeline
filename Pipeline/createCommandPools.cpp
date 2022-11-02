@@ -9,6 +9,6 @@ void Pipeline::createCommandPool() {
     poolInfo.queueFamilyIndex = queueFamilyIndices.graphicsFamily.value();
 
     if (vkCreateCommandPool(device, &poolInfo, nullptr, &commandPool) != VK_SUCCESS) {
-        throw std::runtime_error("createCommandPool: \u001b[31mfailed to create command pool!\u001b[0m");
+        throw std::runtime_error("failed to create graphics command pool!");
     }
 }

@@ -40,10 +40,8 @@ void Pipeline::createSwapChain() {
     createInfo.presentMode = presentMode;
     createInfo.clipped = VK_TRUE;
 
-    createInfo.oldSwapchain = VK_NULL_HANDLE;
-
     if (vkCreateSwapchainKHR(device, &createInfo, nullptr, &swapChain) != VK_SUCCESS) {
-        throw std::runtime_error("createSwapchain: \u001b[31mfailed to create swap chain!\u001b[0m");
+        throw std::runtime_error("failed to create swap chain!");
     }
 
     vkGetSwapchainImagesKHR(device, swapChain, &imageCount, nullptr);

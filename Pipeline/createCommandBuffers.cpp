@@ -10,6 +10,6 @@ void Pipeline::createCommandBuffers() {
     allocInfo.commandBufferCount = (uint32_t)commandBuffers.size();
 
     if (vkAllocateCommandBuffers(device, &allocInfo, commandBuffers.data()) != VK_SUCCESS) {
-        throw std::runtime_error("createCommandBuffer: \u001b[31mfailed to allocate command buffers!\u001b[0m");
+        throw std::runtime_error("failed to allocate command buffers!");
     }
 }

@@ -8,7 +8,7 @@ VkShaderModule Pipeline::createShaderModule(const std::vector<char>& code) {
 
     VkShaderModule shaderModule;
     if (vkCreateShaderModule(device, &createInfo, nullptr, &shaderModule) != VK_SUCCESS) {
-        throw std::runtime_error("createShaderModule: \u001b[31mfailed to create shader module!\u001b[0m");
+        throw std::runtime_error("failed to create shader module!");
     }
 
     return shaderModule;

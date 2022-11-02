@@ -17,6 +17,7 @@ void Pipeline::createLogicalDevice() {
     }
 
     VkPhysicalDeviceFeatures deviceFeatures{};
+    deviceFeatures.samplerAnisotropy = VK_TRUE;
 
     VkDeviceCreateInfo createInfo{};
     createInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
@@ -38,7 +39,7 @@ void Pipeline::createLogicalDevice() {
     }
 
     if (vkCreateDevice(physicalDevice, &createInfo, nullptr, &device) != VK_SUCCESS) {
-        throw std::runtime_error("createLogicalDevice: \u001b[31mfailed to create logical device!\u001b[0m");
+        throw std::runtime_error("failed to create logical device!");
     }
 
     vkGetDeviceQueue(device, indices.graphicsFamily.value(), 0, &graphicsQueue);

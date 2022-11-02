@@ -9,10 +9,21 @@ void Pipeline::initVulkan() {
     createSwapChain();
     createImageViews();
     createRenderPass();
+    createDescriptorSetLayout();
     createGraphicsPipeline();
-    createFramebuffers();
     createCommandPool();
+    createColorResources();
+    createDepthResources();
+    createFramebuffers();
+    createTextureImage();
+    createTextureImageView();
+    createTextureSampler();
+    loadModel();
     createVertexBuffer();
+    createIndexBuffer();
+    createUniformBuffers();
+    createDescriptorPool();
+    createDescriptorSets();
     createCommandBuffers();
     createSyncObjects();
 }
