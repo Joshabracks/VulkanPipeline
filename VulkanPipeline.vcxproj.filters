@@ -42,10 +42,7 @@
     <ClCompile Include="Pipeline\createInstance.cpp">
       <Filter>Source Files\Pipeline</Filter>
     </ClCompile>
-    <ClCompile Include="Pipeline\populateDebugMessengerCreateInfo.cpp">
-      <Filter>Source Files\Pipeline</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\setupDebugMessenger.cpp">
+    <ClCompile Include="Pipeline\debug.cpp">
       <Filter>Source Files\Pipeline</Filter>
     </ClCompile>
     <ClCompile Include="Pipeline\createSurface.cpp">
@@ -57,28 +54,13 @@
     <ClCompile Include="Pipeline\createLogicalDevice.cpp">
       <Filter>Source Files\Pipeline</Filter>
     </ClCompile>
-    <ClCompile Include="Pipeline\createSwapchain.cpp">
-      <Filter>Source Files\Pipeline</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\createImageViews.cpp">
-      <Filter>Source Files\Pipeline</Filter>
-    </ClCompile>
     <ClCompile Include="Pipeline\createRenderPass.cpp">
       <Filter>Source Files\Pipeline</Filter>
     </ClCompile>
     <ClCompile Include="Pipeline\createGraphicsPipeline.cpp">
       <Filter>Source Files\Pipeline</Filter>
     </ClCompile>
-    <ClCompile Include="Pipeline\createFrameBuffers.cpp">
-      <Filter>Source Files\Pipeline</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\createCommandPools.cpp">
-      <Filter>Source Files\Pipeline</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\createCommandBuffers.cpp">
-      <Filter>Source Files\Pipeline</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\recordCommandBuffer.cpp">
+    <ClCompile Include="Pipeline\createCommandPool.cpp">
       <Filter>Source Files\Pipeline</Filter>
     </ClCompile>
     <ClCompile Include="Pipeline\createSyncObjects.cpp">
@@ -90,118 +72,31 @@
     <ClCompile Include="Pipeline\createShaderModule.cpp">
       <Filter>Source Files\Pipeline</Filter>
     </ClCompile>
-    <ClCompile Include="Pipeline\chooseSwapSurfaceFormat.cpp">
-      <Filter>Source Files\Pipeline</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\chooseSwapPresentMode.cpp">
-      <Filter>Source Files\Pipeline</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\chooseSwapExtent.cpp">
-      <Filter>Source Files\Pipeline</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\querySwapChainSupport.cpp">
-      <Filter>Source Files\Pipeline</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\isDeviceSuitable.cpp">
-      <Filter>Source Files\Pipeline</Filter>
-    </ClCompile>
     <ClCompile Include="Pipeline\checkDeviceExtensionSupport.cpp">
       <Filter>Source Files\Pipeline</Filter>
     </ClCompile>
     <ClCompile Include="Pipeline\findQueueFamilies.cpp">
       <Filter>Source Files\Pipeline</Filter>
     </ClCompile>
-    <ClCompile Include="Pipeline\getRequiredExtensions.cpp">
-      <Filter>Source Files\Pipeline</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\checkValidationLayerSupport.cpp">
-      <Filter>Source Files\Pipeline</Filter>
-    </ClCompile>
     <ClCompile Include="Pipeline\readFile.cpp">
-      <Filter>Source Files\Pipeline</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\debugCallback.cpp">
-      <Filter>Source Files\Pipeline</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\createDebugMessengerEXT.cpp">
       <Filter>Source Files\Pipeline</Filter>
     </ClCompile>
     <ClCompile Include="Pipeline\destroyDebugUtilsMessengerEXT.cpp">
       <Filter>Source Files\Pipeline</Filter>
     </ClCompile>
-    <ClCompile Include="Pipeline\createVertexBuffer.cpp">
+    <ClCompile Include="Pipeline\buffers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Pipeline\findMemory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Pipeline\recreateSwapChain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\cleanupSwapChain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Pipeline\framebufferResizeCallback.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\createBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\copyBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\createIndexBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\createDescriptorSetLayout.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\createUniformBuffers.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\updateUniformBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\createDescriptorPool.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\createDescriptorSets.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\createTextureImage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\createImage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Pipeline\singleTimeCommands.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Pipeline\transitionImageLayout.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\copyBufferToImage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\createImageView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\createTextureImageView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\createTextureSampler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\createDepthResources.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Pipeline\findSupportedFormat.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\findDepthFormat.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline\hasStencilComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Pipeline\loadModel.cpp">
@@ -210,10 +105,16 @@
     <ClCompile Include="Pipeline\generateMipmaps.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Pipeline\getMaxUsableSampleCount.cpp">
+    <ClCompile Include="Pipeline\textures.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Pipeline\createColorResources.cpp">
+    <ClCompile Include="Pipeline\images.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pipeline\descriptors.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pipeline\swapchain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

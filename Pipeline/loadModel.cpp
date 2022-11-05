@@ -15,7 +15,7 @@ namespace std {
 	};
 }
 
-void Pipeline::loadModel() {
+void Pipeline::loadModel(/* MODEL_PATH*/) {
 	tinyobj::attrib_t attrib;
 	std::vector<tinyobj::shape_t> shapes;
 	std::vector<tinyobj::material_t> materials;
